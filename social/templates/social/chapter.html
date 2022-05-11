@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Shalom {{book_name}}</title>
+<!--       <link rel="stylesheet" href="{% static 'bulma.min.css' %}" crossorigin="anonymus">
+ -->      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+     <body>
+  <section class="section m-auto">
+  	<div class="container p-3 is-flex is-flex-direction-row is-justify-content-space-between 
+  	is-align-content-space-around is-flex-wrap-wrap">
+	    <div>	
+	    	<h1 class="title is-size-1">Shalom</h1>
+	      <p class="subtitle is-size-5"><strong>Open Bible, Open Code</strong></p>	
+	    </div>	
+	    <div class="box">
+	    	<a href="/">
+				<h2 class="is-size-3">The Book Of <strong>{{book_name}}</strong></h2>
+				</a>
+			</div>
+		</div>
+		<div class="container">
+	   {% for chapter in book_ids %}
+	   {% if chapter_id == chapter %}
+	   <a href="/{{book_id}}/{{chapter}}"><button class="button m-1 is-success">{{chapter}}</button></a>
+	   {% else %}
+	   <a href="/{{book_id}}/{{chapter}}"><button class="button m-1 is-black">{{chapter}}</button></a>
+	   {% endif %}
+	   {% endfor %}
+	   </div>
+	   <hr>
+	   <center>
+			<h3 class="is-size-3">Chapter <strong>{{chapter_id}}</strong></h3>
+			<br>
+  	</center>
+	   <div class="container">
+	   {% for chapter in book %}
+	   <a href="#{{chapter.4}}"><button class="button m-1 is-success is-light">{{chapter.4}}</button></a>
+	   {% endfor %}
+	   </div>
+	</section>	
+	<section class="container m-auto  is-widescreen p-2">
+	{% for chapter in book %}
+		<div class="is-flex m-1 is-flex-direction-row is-align-items-center is-flex-wrap-nowrap is-flex-shrink-1">
+			<button id="{{chapter.4}}"class="button is-info is-light">{{chapter.4}}</button><div class="p-2"></div>
+			<p class="is-size-5 is-italic">{{chapter.5}}</p>
+		</div>
+	{% endfor %}
+	</section>
+  <section class="section m-auto">
+		<div class="container">
+	   {% for chapter in book_ids %}
+	   {% if chapter_id == chapter %}
+	   <a href="/{{book_id}}/{{chapter}}"><button class="button m-1 is-success">{{chapter}}</button></a>
+	   {% else %}
+	   <a href="/{{book_id}}/{{chapter}}"><button class="button m-1 is-black">{{chapter}}</button></a>
+	   {% endif %}
+	   {% endfor %}
+	   </div>
+	</section>
+     </body>
+</html>
